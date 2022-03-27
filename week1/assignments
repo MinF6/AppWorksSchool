@@ -1,3 +1,14 @@
-Q1.
+Q1.答案a、c、e、g、i正確。
+b.應設為Double。
+d.String不允許派值為null，除非改為宣告時改為String? 。
+f.理由同答案d，值為null會編譯失敗。
+h.想取g的宣告的變數的size，但當初宣告時為 var list: List<String?>?，如果要使用Nullable類型的變數中的函式時，編譯器(Compiler)為了防止NullPointerException(NPE)的發生，會要求在使用?.符號來安全呼叫成員，預防NPE的狀況。
+參考:
+https://kotlinlang.org/docs/null-safety.html
+
+
+Q2.答案為c. "Your grace."，因為變數message的長度為39，符合1..39區間，故印出Your grace.。
+
+Q3.答案為d.，每單位約為1000倍，使用pow前記得要先import kotlin.math函式庫。
 
 
