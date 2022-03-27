@@ -1,4 +1,5 @@
-Q1.答案a、c、e、g、i正確。
+Q1.
+答案a、c、e、g、i正確。
 b.應設為Double。
 d.String不允許派值為null，除非改為宣告時改為String? 。
 f.理由同答案d，值為null會編譯失敗。
@@ -7,8 +8,45 @@ h.想取g的宣告的變數的size，但當初宣告時為 var list: List<String
 https://kotlinlang.org/docs/null-safety.html
 
 
-Q2.答案為c. "Your grace."，因為變數message的長度為39，符合1..39區間，故印出Your grace.。
+Q2.
+答案為c. "Your grace."，因為變數message的長度為39，符合1..39區間，故印出Your grace.。
 
-Q3.答案為d.，每單位約為1000倍，使用pow前記得要先import kotlin.math函式庫。
+Q3.
+答案為d.，每單位約為1000倍，使用pow前記得要先import kotlin.math函式庫。
+
+Q4.
+fun main(args: Array<String>) {
+
+    val human1 = Human("ZongMin")
+    human1.attack()
+
+}
+
+class Human(val name: String){
+    fun attack(){
+        println("${name} use Fist Attack!")
+    }
+}
 
 
+Q5.
+fun main(args: Array<String>) {
+
+    val human1 = Mage("ZongMin")
+    human1.attack()
+
+}
+
+open class Human(val name: String){
+    open fun attack(){
+        println("${name} use Fist Attack!")
+    }
+}
+
+class Mage(name:String) : Human(name){
+    override fun attack(){
+        println("${name} use Fireball!")
+    }
+}
+
+Q6.
