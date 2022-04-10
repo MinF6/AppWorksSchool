@@ -1,0 +1,41 @@
+Q1.
+Encapsulation物件導向中用來實作資訊隱藏的機制，確保物件的安全。
+1.Encapsulation可以保護資料免於不適當的被使用，比如說我設計了一個長方形的類別，可以傳入長寬計算面積，但如果傳入了錯誤的參數(例如負值的邊長)，可能導致錯誤，所以如果把資料成員隱藏起來，只提供存取或運算資料成員的函式，讓物件裡面資料的修改，透過函式掌握其值得變化，可以避免產生預期外的值。
+2. 以及如果透過函式來修改資料的話可以讓程式更有擴充性以及維護性
+
+
+Q2.
+多數同個class中的物件都有許多不同的屬性組合，當有些class的物件是有限的、固定的(例如星期、性別、四季)，就可以採用enum的方式來設計，enum是一種data type，讓我們更易理解及可靠的方式描述每個成員。
+Enum常見的用途就是防止參數無效化，這點跟Encapsulation的概念有點像，如果函式使用建立好的enum的話有助於類型的安全，因為如果傳遞給這個函式enum以外的值的話就會編譯器會出錯。
+
+
+Q3.
+在class前面增加enum，即可在其他的class中使用剛建立的enum class作為其中一種屬性，程式碼詳見Q3.kt。
+
+
+Q4.
+LinearLayout (線性佈局)
+這種佈局在顯示元件的時候會默認保持元件之間的間隔以及元件之間的互相對齊。
+線性佈局顯示組件的方式有兩種方式：垂直和水平，是通過orientation來設定的，預設是水平佈局，且不管是一行都只能存在一個元件，也可以透過設定權重的方式來分配佈局。
+
+RelativeLayout (相對佈局)
+是透過相對位置來設定佈局內各個元件的位置，元件設定的位置可以是相對於整個RelativeLayout佈局或者是相對於其他元件的位置，在這種佈局情況下，若該元件都沒有做任何設定的會，通常會預設在畫面的『左上角』，所以可能會有元件重疊的情況發生，所以需透過設定ID以及對相應ID的位置來分配佈局。
+
+兩者在佈局的方法上有所不同，LinearLayout透過水平跟垂直的方式佈局，RelativeLayou則透過與父元件或其他的元件來佈局。
+性能方面linearlayout和RelativeLayout都屬於viewgroup，view的繪製過程分為三部分：測量measure,佈局layout , 繪製draw
+他們的在佈局和繪製方面比較接近，在測量方面RelativeLayout比linearlayout慢，RelativeLayout慢於LinearLayout是因為它會讓子View調用2次measure過程，而LinearLayout只需一次，但是有weight屬性存在時，LinearLayout也需要兩次measure，速度就會一樣。
+
+參考:https://www.jianshu.com/p/b6767e382368
+
+
+Q5.
+因為是近期開始學習Android的關係，在查找這題之後赫然發現平常來拉來拉去很好用的ConstraintLayout是後來才推出的。
+Android Studio為了減少傳統佈局的階層與效能推出了ConstraintLayout(約束佈局)，Constraintlayout就像是 Relative Layout 更加方便使用的一種Layout。
+1.ConstraintLayout 與其他佈局不同，傳統的佈局常常會有許多階層，階層越多會導致效能越差，ConstraintLayout具有 平面視圖層次結構(flat view hierarchy)，因此比RelativeLayout具有更好的性能。
+2.在可以拖放的GUI builder中，過往的Relative Layout在GUI builder比較難處理拖放的操作，ConstraintLayout在調整上也有多了一些可視化的編輯器讓我們更容易使用。
+
+參考:https://tutorial.eyehunts.com/android-interview-questions/differences-between-constraintlayout-relativelayout/
+
+
+
+
