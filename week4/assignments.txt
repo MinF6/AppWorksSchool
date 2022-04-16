@@ -1,0 +1,54 @@
+Q1.
+Polymorphism在生物學中是指一個生物或物種可以有不同的形式或階段，就像上周在調查繼承(Inheritance)的時候，提供的生物分類範例。
+而在物件導向程式設計的概念中， Polymorphism跟繼承是息息相關的，因為要有辦法繼承父類的屬性及方法，才可以去設計Polymorphism。
+而Polymorphism就是在原有的類別提供「抽象類別」（Abstract）與「介面」（Interface），目的是為了消除了類別與類別之間的耦合性，使程式更容易維護與擴充。
+
+
+Q2.
+可以採用官網的流程圖來解釋，詳見網址或參考Q2.jpg，當Acitvity啟動的時候，會先調用onCreate()接著是onStart()再來onResume()，經過上述三個事件就會進入Acitvity執行階段，
+只要其他的Activity進入foreground(像是出現對話框)，就會開始執行onPause()，接著會根據不同狀況進入不同的週期：
+1.使用者returns到原本的這個Activity時，則會回到onResume()後繼續執行Activity。
+2.具有更高優先權的應用程式需要使用memory時(像是點開app清單後打開其他的app)，原本的應用程式的process會被砍掉，直到使用者再次navigates到這個activity，接著從onCreate()接續onStart()、onResume()直到Activity執行。
+3.如果是這個activity從螢幕上消失(not visible)的則會進入onStop()。
+
+在onStop()階段一樣會根據不同的狀況進入不同的週期：
+1.同onPause()階段，如果有更高優先權的應用程式需要使用memory時，接續precess被砍掉的流程。
+2.與onPause()階段不同的是，如果在opStop()階段使用者再次navigates到這個activity的話，則會進入onRestart()後接續onStart()、onResume()直到Activity執行。
+3.如果Activity正在完成或者是被系統破壞的話則會進入onDestroy()。
+進入onDestroy()之後就會使Activity關閉
+
+參考：
+https://developer.android.com/reference/android/app/Activity#ActivityLifecycle
+https://litotom.com/ch5-4-activity-lifecycle/
+
+
+Q3.
+Jetpack 是google在2018年推出的一套函式庫(libraries)，可協助開發人員遵循最佳做法、減少樣板程式碼，以及編寫在各種 Android 版本和裝置中都能維持一致運作方式的程式碼，讓開發人員能專心處理重要的程式碼。
+調查後發現裡面一些內容已經默默的在教學中使用到了，使用函式庫的好處真的不少，很多東西不在需要自己去建置。
+根據官方的定義可以觀察出Jetpack是由許多的函式庫組成，而不是單一的函式庫，而且使用Jetpack 可以輕鬆的處理因為Android 版本不一致和設備不同所產生的差異性和兼容性問題。
+
+參考：
+https://developer.android.com/jetpack
+
+
+Q4.
+Coroutines是一種可以幫助處理非同步需求的機制，當主要的線程(Thread)跑的程式順序中，如果正在執行的函式需要其他線程的處理結果，導致主線程會停止接下來的作業在等待結果，畫面也會停滯住。
+而Coroutines 允許函式可以被 "掛起" (suspend)，避免主線程的佔用，而且被掛起的函式後續也可以被恢復，並從暫停時保留的狀態繼續執行。
+在Android官方也有提出，我們可以在Android上使用Coroutines來簡化非同步執行的程式碼。
+像Kotlin Coroutines 就是 Kotlin 的一個官方函式庫讓開發者以便利方式撰寫非同步程式設計模型、非封鎖 (Non-blocking) 及並行 (Concurrency) 的程式。
+
+參考：
+https://developer.android.com/kotlin/coroutines
+https://blog.kennycoder.io/2020/05/16/%E9%80%B2%E7%A8%8B-Process-%E3%80%81%E7%B7%9A%E7%A8%8B-Thread-%E3%80%81%E5%8D%94%E7%A8%8B-Coroutine-%E7%9A%84%E6%A6%82%E5%BF%B5%E8%AC%9B%E8%A7%A3/
+https://medium.com/jastzeonic/kotlin-coroutine-%E9%82%A3%E4%B8%80%E5%85%A9%E4%BB%B6%E4%BA%8B%E6%83%85-685e02761ae0
+
+
+
+
+
+
+
+
+
+
+
