@@ -24,6 +24,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.marsrealestate.databinding.GridViewItemBinding
 import com.example.android.marsrealestate.network.MarsProperty
+import com.example.android.marsrealestate.R
+import java.util.*
 
 /**
  * This class implements a [RecyclerView] [ListAdapter] which uses Data Binding to present [List]
@@ -45,6 +47,18 @@ class PhotoGridAdapter( val onClickListener: OnClickListener ) :
             binding.property = marsProperty
             // This is important, because it forces the data binding to execute immediately,
             // which allows the RecyclerView to make the correct view size measurements
+//            $%,.0f/month
+            if(marsProperty.isRental){
+                binding.propertyText.text = "For Rent"
+                binding.priceText.text =  "\$%,.0f/month".format(Locale.ENGLISH, marsProperty.price)
+            }else{
+                binding.propertyText.text = "For Sale"
+                binding.priceText.text =  "\$%,.0f".format(Locale.ENGLISH, marsProperty.price)
+            }
+
+
+
+
             binding.executePendingBindings()
         }
     }
@@ -70,7 +84,7 @@ class PhotoGridAdapter( val onClickListener: OnClickListener ) :
      */
     override fun onCreateViewHolder(parent: ViewGroup,
                                     viewType: Int): MarsPropertyViewHolder {
-        return MarsPropertyViewHolder(GridViewItemBinding.inflate(LayoutInflater.from(parent.context)))
+        return MarsPropertyViewHolder(GridViewItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     /**
